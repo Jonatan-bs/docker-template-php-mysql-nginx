@@ -9,27 +9,30 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     php7.3-bcmath \
     php7.3-xdebug \
     git \
+    npm \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* 
 
 WORKDIR /var/www
 
 RUN echo '\n\
-xdebug.remote_host = "host.docker.internal"\n\
-xdebug.default_enable = 1\n\
-xdebug.remote_autostart = 1\n\
-xdebug.remote_connect_back = 0\n\
-xdebug.remote_enable = 1\n\
-xdebug.remote_handler = "dbgp"\n\
-xdebug.remote_port = 9001'\
->> /etc/php/7.3/fpm/conf.d/20-xdebug.ini
+    xdebug.remote_host = "host.docker.internal"\n\
+    xdebug.default_enable = 1\n\
+    xdebug.remote_autostart = 1\n\
+    xdebug.remote_connect_back = 0\n\
+    xdebug.remote_enable = 1\n\
+    xdebug.remote_handler = "dbgp"\n\
+    xdebug.remote_port = 9001'\
+    >> /etc/php/7.3/fpm/conf.d/20-xdebug.ini
 
 RUN echo '\n\
-opcache.enable=1\n\
-opcache.revalidate_freq=0\n\
-opcache.validate_timestamps=1\n\
-opcache.max_accelerated_files=10000\n\
-opcache.memory_consumption=192\n\
-opcache.max_wasted_percentage=10\n\
-opcache.interned_strings_buffer=16\n\
-opcache.fast_shutdown=1'\
->> /etc/php/7.3/fpm/conf.d/10-opcache.ini
+    opcache.enable=1\n\
+    opcache.revalidate_freq=0\n\
+    opcache.validate_timestamps=1\n\
+    opcache.max_accelerated_files=10000\n\
+    opcache.memory_consumption=192\n\
+    opcache.max_wasted_percentage=10\n\
+    opcache.interned_strings_buffer=16\n\
+    opcache.fast_shutdown=1'\
+    >> /etc/php/7.3/fpm/conf.d/10-opcache.ini
+
+
