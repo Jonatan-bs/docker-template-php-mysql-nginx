@@ -1,6 +1,10 @@
-docker-compose up --build
+# Start container
+docker-compose up
 
-docker-compose exec -w /var/www php composer create-project laravel/laravel .
-// move files to root
+# Create Laravel project
+docker-compose exec -w /var/www php composer create-project laravel/laravel ./html
+## OBS Move files to root directory after install
 
-docker-compose exec php npm install
+
+# Init yarn
+docker-compose exec php npm init
